@@ -2,12 +2,12 @@
 
 require "m2x"
 TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
-BPNAME = "loadreport-openshift"
+BPNAME = "loadreport-heroku"
 
 
-puts Time.now.strftime(TIMEFORMAT) + ": Starting loadreport.rb run"
+puts "Starting loadreport.rb run"
 
-APIKEY = File.read(ENV['OPENSHIFT_REPO_DIR'] + 'm2x_api_key.txt').strip
+APIKEY = File.read('m2x_api_key.txt').strip
 
 m2x = M2X.new(APIKEY)
 
@@ -41,5 +41,4 @@ m2x.feeds.update_stream(lr_blueprint["id"], "load_1m",  value: load_1m)
 m2x.feeds.update_stream(lr_blueprint["id"], "load_5m",  value: load_5m)
 m2x.feeds.update_stream(lr_blueprint["id"], "load_15m", value: load_15m)
 
-puts Time.now.strftime(TIMEFORMAT) + ": Ending loadreport.rb run"
-puts
+puts "Ending loadreport.rb run"
