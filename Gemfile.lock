@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    m2x (0.0.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  m2x

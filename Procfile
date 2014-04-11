@@ -1,1 +1,1 @@
-worker: sh master.sh
+clock: ruby master.rb
