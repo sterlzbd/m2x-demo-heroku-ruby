@@ -6,8 +6,6 @@ BPNAME = "loadreport-heroku"
 
 
 puts "Starting loadreport.rb run"
-sleep 30
-puts "after sleep"
 
 APIKEY = File.read(File.join(File.dirname(__FILE__), 'm2x_api_key.txt')).strip
 
