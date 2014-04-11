@@ -11,7 +11,7 @@ APIKEY = File.read(File.join(File.dirname(__FILE__), 'm2x_api_key.txt')).strip
 
 m2x = M2X.new(APIKEY)
 
-sleep(5)
+sleep(30)
 
 # Test to see if our blueprint exists
 loadreport_blueprint_exists = false
