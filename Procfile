@@ -1,1 +1,1 @@
-clock: ruby master.rb
+clock: python master.py
