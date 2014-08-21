@@ -31,9 +31,9 @@ if not loadreport_blueprint_exists
 end
 
 # Create the streams if they don't exist
-m2x.feeds.update_stream(lr_blueprint["id"], "load_1m")
-m2x.feeds.update_stream(lr_blueprint["id"], "load_5m")
-m2x.feeds.update_stream(lr_blueprint["id"], "load_15m")
+m2x.feeds.update_stream(lr_blueprint["id"], "load_1m",  {})
+m2x.feeds.update_stream(lr_blueprint["id"], "load_5m",  {})
+m2x.feeds.update_stream(lr_blueprint["id"], "load_15m", {})
 
 # Get our load data from the system
 # Match `uptime` load averages output for both Linux and OSX
