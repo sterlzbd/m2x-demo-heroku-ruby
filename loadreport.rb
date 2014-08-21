@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
 require "m2x"
+require "time"
+
 TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
 BPNAME = "loadreport-heroku"
-
 
 puts "Starting loadreport.rb run"
 
