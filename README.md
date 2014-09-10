@@ -7,6 +7,7 @@ This repo provides a framework for a Heroku application with Ruby code that repo
 
 Please note that the Heroku machine and M2X are using times in UTC, not in your local time zone.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Pre-Requisites
 
