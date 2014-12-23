@@ -2,5 +2,14 @@
   "name": "M2X Ruby Demo App",
   "description": "A demo App for AT&T M2X",
   "repository": "https://github.com/attm2x/m2x-demo-heroku-ruby",
-  "keywords": ["ruby", "m2x"]
+  "keywords": ["ruby", "m2x"],
+  "env": {
+    "M2X_API_KEY": {
+      "description": "M2X API Key",
+      "required": true
+    }
+  },
+  "scripts": {
+    "postdeploy": "heroku ps:scale clock=1"
+  }
 }
