@@ -12,6 +12,10 @@
       "description": "run on a single (free) dyno",
       "value": "true"
     },
+    "CONCURRENCY": {
+      "description": "level of total concurrency",
+      "value": "1"
+    },
     "CLOCK_CONCURRENCY": {
       "description": "level of concurrency for clock processes",
       "value": "1"
