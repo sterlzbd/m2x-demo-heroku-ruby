@@ -1,0 +1,6 @@
+{
+  "name": "M2X Ruby Demo App",
+  "description": "A demo App for AT&T M2X",
+  "repository": "https://github.com/attm2x/m2x-demo-heroku-ruby",
+  "keywords": ["ruby", "m2x"]
+}
