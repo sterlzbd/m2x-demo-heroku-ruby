@@ -8,8 +8,5 @@
       "description": "M2X API Key",
       "required": true
     }
-  },
-  "scripts": {
-    "postdeploy": "heroku ps:scale clock=1"
   }
 }
