@@ -7,6 +7,14 @@
     "M2X_API_KEY": {
       "description": "M2X API Key",
       "required": true
+    },
+    "THRIFTY": {
+      "description": "run on a single (free) dyno",
+      "value": "true"
+    },
+    "CLOCK_CONCURRENCY": {
+      "description": "level of concurrency for clock processes",
+      "value": "1"
     }
   }
 }
