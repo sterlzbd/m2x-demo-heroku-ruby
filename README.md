@@ -39,6 +39,14 @@ git commit -m "Updating to use my correct API key."
 git push heroku master
 ```
 
+Another way of setting the M2X API Master Key is using Heroku environment variables:
+
+```
+heroku config:set M2X_API_KEY=<Your M2X API key>
+```
+
+Either one works okay here
+
 ### Scaling Your Application
 Now your code should be uploaded. However, because you're using the "Clock" process type, your code isn't running automatically. You'll need to scale the number of clock workers to 1:
 
