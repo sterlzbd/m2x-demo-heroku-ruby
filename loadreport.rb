@@ -10,30 +10,30 @@ puts "Starting loadreport.rb run"
 
 APIKEY = ENV["M2X_API_KEY"] || File.read(File.join(File.dirname(__FILE__), 'm2x_api_key.txt')).strip
 
-m2x = M2X.new(APIKEY)
+m2x = M2X::Client.new(APIKEY)
 
-# Test to see if our blueprint exists
-loadreport_blueprint_exists = false
-blueprints = m2x.blueprints.list()
+# Test to see if our device exists
+loadreport_device_exists = false
+devices = m2x.devices
 
-lr_blueprint = nil
+lr_device = nil
 
-blueprints.json["blueprints"].each { |bp|
-    if bp['name'] == BPNAME
-        loadreport_blueprint_exists = true
-        lr_blueprint = bp
-    end
+devices.each { |d|
+  if d.attributes["name"] == BPNAME
+    loadreport_device_exists = true
+    lr_device = d
+  end
 }
 
-if not loadreport_blueprint_exists
-    puts "About to create the blueprint..."
-    lr_blueprint = m2x.blueprints.create(name: BPNAME, visibility: "private", description: "Load Report")
+unless loadreport_device_exists
+  puts "About to create the device..."
+  lr_device = m2x.create_device(name: BPNAME, visibility: "private", description: "Load Report")
 end
 
 # Create the streams if they don't exist
-m2x.feeds.update_stream(lr_blueprint["id"], "load_1m",  {})
-m2x.feeds.update_stream(lr_blueprint["id"], "load_5m",  {})
-m2x.feeds.update_stream(lr_blueprint["id"], "load_15m", {})
+lr_device.update_stream("load_1m",  {})
+lr_device.update_stream("load_5m",  {})
+lr_device.update_stream("load_15m", {})
 
 # Get our load data from the system
 # Match `uptime` load averages output for both Linux and OSX
@@ -44,11 +44,13 @@ load_1m, load_5m, load_15m = `uptime`.match(UPTIME_RE).captures
 now = Time.now.iso8601
 
 values = {
-  load_1m:  [ { value: load_1m, at: now } ],
-  load_5m:  [ { value: load_5m, at: now } ],
-  load_15m: [ { value: load_15m, at: now } ]
+  values: {
+    load_1m:  [ { value: load_1m, timestamp: now } ],
+    load_5m:  [ { value: load_5m, timestamp: now } ],
+    load_15m: [ { value: load_15m, timestamp: now } ]
+  }
 }
 
-m2x.feeds.post_multiple(lr_blueprint["id"], values)
+lr_device.post_updates(values)
 
 puts "Ending loadreport.rb run"

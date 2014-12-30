@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    m2x (0.0.6)
+    m2x (2.0.0)
 
 PLATFORMS
   ruby
