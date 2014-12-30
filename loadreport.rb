@@ -4,7 +4,7 @@ require "m2x"
 require "time"
 
 TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
-BPNAME = "loadreport-heroku"
+DEVICE_NAME = "loadreport-heroku"
 
 puts "Starting loadreport.rb run"
 
@@ -19,7 +19,7 @@ devices = m2x.devices
 lr_device = nil
 
 devices.each { |d|
-  if d.attributes["name"] == BPNAME
+  if d.attributes["name"] == DEVICE_NAME
     loadreport_device_exists = true
     lr_device = d
   end
@@ -27,7 +27,7 @@ devices.each { |d|
 
 unless loadreport_device_exists
   puts "About to create the device..."
-  lr_device = m2x.create_device(name: BPNAME, visibility: "private", description: "Load Report")
+  lr_device = m2x.create_device(name: DEVICE_NAME, visibility: "private", description: "Load Report")
 end
 
 # Create the streams if they don't exist
